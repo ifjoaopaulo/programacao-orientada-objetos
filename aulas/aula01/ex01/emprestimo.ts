@@ -21,7 +21,7 @@ export class Emprestimo {
     if(this.estaAtrasado() === false) {
       return 0;
     } else {
-      return 2 * this.diasEmprestado;
+      return 2 * (this.diasEmprestado - 14);
     }
   }
 }
