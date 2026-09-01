@@ -10,7 +10,7 @@ export class Emprestimo {
   }
 
   estaAtrasado(): boolean {
-    if(this.diasEmprestado > 14) {
+    if (this.diasEmprestado > 14) {
       return true;
     } else {
       return false;
@@ -18,7 +18,7 @@ export class Emprestimo {
   }
 
   multa(): number {
-    if(this.estaAtrasado() === false) {
+    if (this.estaAtrasado() === false) {
       return 0;
     } else {
       return 2 * (this.diasEmprestado - 14);
