@@ -1,10 +1,10 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe, Delete } from '@nestjs/common';
 import { Livro } from './livro';
 import { LivrosService } from './livros.service';
 
 @Controller('livros')
 export class LivrosController {
-  constructor(private readonly livrosService: LivrosService) {}
+  constructor(private readonly livrosService: LivrosService) { }
 
   @Get()
   async listar(): Promise<Livro[]> {
@@ -19,5 +19,10 @@ export class LivrosController {
   @Get(':id')
   async buscar(@Param('id', ParseIntPipe) id: number): Promise<Livro> {
     return await this.livrosService.buscar(id);
+  }
+
+  @Delete(':id')
+  async apagar(@Param('id', ParseIntPipe) id: number): Promise<Livro> {
+    return await this.livrosService.apagar(id);
   }
 }

@@ -8,7 +8,7 @@ export class LivrosService {
   constructor(
     @InjectRepository(Livro)
     private readonly repositorio: Repository<Livro>,
-  ) {}
+  ) { }
 
   async listar(): Promise<Livro[]> {
     return await this.repositorio.find();
@@ -24,5 +24,9 @@ export class LivrosService {
 
   async buscarPorAutor(autor: string): Promise<Livro[]> {
     return await this.repositorio.findBy({ autor });
+  }
+
+  async apagar(id: number): Promise<Livro> {
+    return await this.repositorio.remove(await this.buscar(id));
   }
 }
